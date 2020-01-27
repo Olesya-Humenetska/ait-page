@@ -12,15 +12,13 @@ body {
   font-size: 16px;
   font-family: 'Open-Sans', sans-serif;
   background-color: $white;
+  color: $white;
 }
 
 h5 {
   font-size: 24px;
   font-family: 'Montserrat-Bold', sans-serif;
 }
-//img {
-//  width: 100%;
-//}
 .section-top-block {
   background: url("../images/Rogue-chefs-bg.jpg") no-repeat center center;
   background-size: cover;
@@ -28,7 +26,6 @@ h5 {
 }
 
 .header {
-  min-height: 780px;
   min-height: 100vh;
 }
 .section-title-italic {
@@ -60,16 +57,19 @@ h5 {
 }
 p {
   font-size: 14px;
-  font-family: 'Open-Sans', sans-serif;
   color: $white;
 }
 .section-description {
   font-size: 16px;
   text-align: center;
 }
+button {
+  &:focus {
+    outline: none;
+  }
+}
 .btn-general {
   font-size: 18px;
-  font-family: "Open-Sans",sans-serif;
   margin-top: 20px;
   color: $white;
   text-transform: uppercase;
@@ -84,10 +84,7 @@ p {
   border: none;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
-  -webkit-transition-property: color;
-  transition-property: color;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  transition: color 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,21 +97,22 @@ p {
     right: 0;
     bottom: 0;
     background-color: $black-light;
-    -webkit-transform: scale(0);
     transform: scale(0);
-    -webkit-transition-property: transform;
-    transition-property: transform;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
+    transition: transform 0.3s ease-out;
   }
   &:hover {
     &:before {
-      -webkit-transform: scale(1);
       transform: scale(1);
     }
     color: $white;
+  }
+  &--white {
+    &:before {
+      background-color: $white;
+    }
+    &:hover {
+      color: $grey-dark;
+    }
   }
 }
 @media (min-width: 320px) {
@@ -138,7 +136,7 @@ p {
 
   //================================================ navbar-main
   .navbar-main {
-    padding: 15px 0;
+    padding: 0;
     max-width: 890px;
     margin: auto;
     .nav-item {
@@ -257,11 +255,7 @@ p {
         position: relative;
         transform: perspective(1px) translateZ(0);
         box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-        position: relative;
-        -webkit-transition-property: color;
-        transition-property: color;
-        -webkit-transition-duration: 0.3s;
-        transition-duration: 0.3s;
+        transition: color 0.3s;
         overflow: hidden;
         min-height: 350px;
         &:before {
@@ -273,14 +267,8 @@ p {
           right: 0;
           bottom: 0;
           background-color: rgba(25, 25, 25, 0.5);
-          -webkit-transform: scale(0);
           transform: scale(0);
-          -webkit-transition-property: transform;
-          transition-property: transform;
-          -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
-          -webkit-transition-timing-function: ease-out;
-          transition-timing-function: ease-out;
+          transition: transform 0.2s ease-out;
         }
         .btn-general {
           display: none;
@@ -288,8 +276,7 @@ p {
           top: 50%;
           left: 50%;
           margin-right: -50%;
-          transform: translate3d(-50%, -50%,0);
-
+          transform: translate3d(-50%, -50%, 0);
         }
         img {
           object-fit: cover;
@@ -305,12 +292,6 @@ p {
           }
           .btn-general {
             display: flex;
-            &:before {
-              background-color: $white;
-            }
-            &:hover {
-              color: $grey-dark;
-            }
           }
         }
       }
@@ -320,169 +301,301 @@ p {
       display: flex;
       justify-content: center;
     }
-  }
-  //================================================ END TASTING
-
-  //================================================ CLIENT
-  .section-client {
-    background: url("../images/happy_bg.jpg") no-repeat center center;
-    background-size: cover;
-    .quote {
-      text-align: center;
-      margin-bottom: 12px;
-    }
-    &--slider {
-      .slide {
-        padding-bottom: 90px;
+    &--modal {
+      .btn-close {
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 10px;
       }
-      .carousel-description {
-        font-size: 16px;
-        color: $white;
-        font-family: 'Open-Sans', sans-serif;
-        max-height: 180px;
-        overflow: hidden;
-      }
-      .client-name {
-        font-size: 16px;
-        color: $white;
-        text-align: center;
-        text-transform: uppercase;
-        font-family: 'Open-Sans-Bold', sans-serif;
-      }
-    }
-  }
-  //================================================ END CLIENT
-  //===================================================slider-general
-  .slider-general {
-    padding: 35px 0;
-    .carousel {
-      .carousel-item {
-      }
-    }
-    .carousel-control {
-      position: absolute;
-      height: 40px;
-      width: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.2s;
-      bottom: 0;
-      &.left {
-        left: 0;
-      }
-      &.right {
-        left: calc(100% - 48px);
-      }
-      &:hover {
-        box-shadow: 0px 0px 0px 1px rgba(255, 26, 44, 1);
-      }
-    }
-    .carousel-indicators {
-      &--item {
-        border: 1px solid $red;
-        width: 15px;
-        height: 15px;
-        position: relative;
-        background: transparent;
-        -webkit-transition-property: color;
-        transition-property: color;
-        -webkit-transition-duration: 0.3s;
-        transition-duration: 0.3s;
-        opacity: 1;
-        &:before {
-          content: "";
-          position: absolute;
-          z-index: -1;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: $red;
-          -webkit-transform: scale(0);
-          transform: scale(0);
-          -webkit-transition-property: transform;
-          transition-property: transform;
-          -webkit-transition-duration: 0.3s;
-          transition-duration: 0.3s;
-          -webkit-transition-timing-function: ease-out;
-          transition-timing-function: ease-out;
-        }
-        &.active, &:hover {
-
-          &:before {
-            transform: scale(.7);
-          }
-        }
-      }
-    }
-  }
-  //=================================================== END slider-general
-
-
-  //=================================================== FOOTER
-  .footer--top {
-    padding: 12px 0;
-    background-color: $grey-dark;
-    .logo {
-      img {
-        max-height: 140px;
-      }
-    }
-    .navbar-main {
-      .nav-item {
-        width: 100%;
-        text-align: center;
-        margin-top: 0;
-      }
-    }
-    .social-section {
-      text-align: right;
-    }
-    .social {
-      //text-align: center;
-      .title {
-        font-size: 14px;
-        color: $white;
-        text-transform: uppercase;
-        font-family: 'Open-Sans', sans-serif;
-      }
-      .social--wrap {
-        display: flex;
-        //justify-content: flex-end;
-      }
-      .social-network {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        justify-content: center;
+      &.show {
+        bottom: 0;
+        right: 0;
+        display: flex !important;
         align-items: center;
-        box-shadow: 0px 0px 0px 1px #ff1a2c;
-        margin: 10px 12px;
-        &.facebook {
-          background: url("../images/social-facebook.png") no-repeat center center;
-          &:hover {
-            background: $red url("../images/social-facebook-hover.png") no-repeat center center;
-          }
-        }
-        &.instagram {
-          background: url("../images/social-insta.png") no-repeat center center;
-          &:hover {
-            background: $red url("../images/social-insta-hover.png") no-repeat center center;
-          }
-        }
+        justify-content: center;
+      }
+      p {
+        color: $grey-dark;
+          font-size: 16px;
+          line-height: 1.75;
+          text-align: left;
+
+      }
+      .modal-dialog {
+      }
+  }
+    &--modal-wrap {
+      background-color: $white;
+
+    }
+    .aos-animate {
+      transform: initial !important;
+    }
+}
+//================================================ END TASTING
+
+//================================================ CLIENT
+.section-client {
+background: url("../images/happy_bg.jpg") no-repeat center center;
+background-size: cover;
+.quote {
+  text-align: center;
+  margin-bottom: 12px;
+}
+&--slider {
+  .slide {
+    padding-bottom: 90px;
+  }
+  .carousel-description {
+    font-size: 16px;
+    max-height: 180px;
+    overflow: hidden;
+  }
+  .client-name {
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Open-Sans-Bold', sans-serif;
+  }
+}
+}
+//================================================ END CLIENT
+//===================================================slider-general
+.slider-general {
+padding: 35px 0;
+.slick-slider {
+  padding-bottom: 60px;
+}
+.slick-track {
+  padding: 10px 0;
+}
+.slick-dots {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  li {
+    position: relative;
+    display: inline-block;
+    border: 1px solid $red;
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    transition: color 0.3s;
+    opacity: 1;
+    margin: 0 8px;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $red;
+      transform: scale(0);
+      transition: transform 0.3s ease-out;
+    }
+    &.slick-active, &:hover {
+      &:before {
+        transform: scale(.7);
+      }
+    }
+    button {
+      display: none;
+      &:focus {
+        outline: none;
       }
     }
   }
-  .contact-information {
-    background-color: $black;
-    padding: 10px;
-    text-align: center;
-    p {
-      margin: 0;
+}
+.slick-initialized .slick-slide {
+  max-height: 286px;
+  transition: transform 0.3s ease-out;
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(25,25,25,0.5);
+  }
+  .card-img-top {
+    border-radius: 0;
+    max-height: 286px;
+    object-fit: cover;
+  }
+  .classes-card--caption {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 28px;
+    font-family: 'Fjalla-One', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-out;
+  }
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    z-index: 9;
+    &:before {
+      z-index: 1;
+    }
+    .classes-card--caption {
+      z-index: 10;
     }
   }
-  //=================================================== END FOOTER
+}
+
+.slick-arrow {
+  position: absolute;
+  bottom: -5px;
+  height: 40px;
+  width: 40px;
+  font-size: 0;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  background: transparent url('../images/left-arrow.png') no-repeat center;
+  &:hover {
+    box-shadow: 0px 0px 0px 1px #ff1a2c;
+  }
+}
+.slick-prev {
+  left: 13%;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.slick-next {
+  right: 13%;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.carousel-control {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  bottom: 0;
+  &.left {
+    left: 0;
+  }
+  &.right {
+    left: calc(100% - 48px);
+  }
+  &:hover {
+    box-shadow: 0px 0px 0px 1px rgba(255, 26, 44, 1);
+  }
+}
+.carousel-indicators {
+  &--item {
+    border: 1px solid $red;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    background: transparent;
+    transition: color 0.3s;
+    opacity: 1;
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $red;
+      transform: scale(0);
+      transition: transform 0.3s ease-out;
+    }
+    &.active, &:hover {
+
+      &:before {
+        transform: scale(.7);
+      }
+    }
+  }
+}
+}
+//=================================================== END slider-general
+
+
+//=================================================== FOOTER
+.footer--top {
+padding: 12px 0;
+background-color: $grey-dark;
+.logo {
+  img {
+    max-height: 140px;
+  }
+}
+.navbar-main {
+  .nav-item {
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+  }
+}
+.social-section {
+  text-align: right;
+}
+.social {
+  .title {
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  .social--wrap {
+    display: flex;
+  }
+  .social-network {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 0px 1px #ff1a2c;
+    margin: 10px 12px;
+    &.facebook {
+      background: url("../images/social-facebook.png") no-repeat center center;
+      &:hover {
+        background: $red url("../images/social-facebook-hover.png") no-repeat center center;
+      }
+    }
+    &.instagram {
+      background: url("../images/social-insta.png") no-repeat center center;
+      &:hover {
+        background: $red url("../images/social-insta-hover.png") no-repeat center center;
+      }
+    }
+  }
+}
+}
+.contact-information {
+background-color: $black;
+padding: 10px;
+text-align: center;
+p {
+  margin: 0;
+}
+}
+//=================================================== END FOOTER
 
 }
 
@@ -497,40 +610,40 @@ p {
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .header {
-    background-color: rgba(0, 0, 0, 0.0);
-    .logo {
-      position: static;
-      width: auto;
-      img {
-        width: 100%;
-      }
-    }
-    .navbar-main {
-      .nav-item {
-        &:not(.nav-item--logo) {
-          margin-top: 40px;
-        }
-      }
+.header {
+background-color: rgba(0, 0, 0, 0.0);
+.logo {
+  position: static;
+  width: auto;
+  img {
+    width: 100%;
+  }
+}
+.navbar-main {
+  .nav-item {
+    &:not(.nav-item--logo) {
+      margin-top: 40px;
     }
   }
-  .section-top-block {
-    .btn-general {
-      position: absolute;
-      bottom: 20%;
-      left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-  .section-training {
-    &--text {
-      order: 2;
-    }
-    &--img {
-      order: 1;
-    }
-  }
+}
+}
+.section-top-block {
+.btn-general {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+}
+.section-training {
+&--text {
+  order: 2;
+}
+&--img {
+  order: 1;
+}
+}
 }
 
 // Extra large devices (large desktops, 1200px and up)
